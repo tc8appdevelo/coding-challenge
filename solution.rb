@@ -19,7 +19,7 @@ g.jpg, Krakow, 2016-02-29 22:13:11"
 Photo = Struct.new(:extension, :location, :date, :ans_idx)
 
 def solution(s)
-  hash = Hash.new { |h,k| h[k] = [] }
+  hash = Hash.new { |h, k| h[k] = [] }
   answer = s.split("\n")
   s.split("\n").each_with_index do |ele, idx|
     attributes = ele.split(",")
@@ -34,11 +34,11 @@ def solution(s)
 
   hash.each do |key, val|
     num_length = val.length.to_s.length
-    val.sort! { |a,b| a.date <=> b.date }
+    val.sort! { |a, b| a.date <=> b.date }
 
     val.each_with_index do |photo, idx|
-      zeros = num_length - (idx+1).to_s.length
-      answer[photo.ans_idx] = photo.location + "0" * zeros + (idx +1).to_s + "." + photo.extension
+      zeros = num_length - (idx + 1).to_s.length
+      answer[photo.ans_idx] = photo.location + "0" * zeros + (idx + 1).to_s + "." + photo.extension
     end
   end
   answer.join("\n")
